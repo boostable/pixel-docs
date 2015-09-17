@@ -152,7 +152,7 @@ but objects with these attributes should be used.</p>
 <p>parameters:</p>
 
 <ul>
-<li>cartItems {Array[EcommerceObject] | EcommerceObject}</li>
+<li>cartItems {Array[EcommerceObject] | EcommerceObject} <em>(optional)</em> the current cart</li>
 </ul>
 
 <p>usage:</p>
@@ -180,7 +180,7 @@ bst(<span class="pl-s"><span class="pl-pds">'</span>cart<span class="pl-pds">'</
 <p>parameters:</p>
 
 <ul>
-<li>order {EcommerceOrder} -- the order in question </li>
+<li>order {EcommerceOrder} <em>(required)</em> the order in question </li>
 </ul>
 
 <p>usage:</p>
@@ -282,46 +282,6 @@ bst(<span class="pl-s"><span class="pl-pds">'</span>purchase<span class="pl-pds"
   cart<span class="pl-k">:</span> c
 };
 bst(<span class="pl-s"><span class="pl-pds">'</span>purchase<span class="pl-pds">'</span></span>, o);
-</pre></div>
-
-<p>track multi-item cart as individual purchases</p>
-
-<div class="highlight highlight-source-js"><pre><span class="pl-c">/* start order 1*/</span>
-<span class="pl-k">var</span> o <span class="pl-k">=</span> {
-  id<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>order-177<span class="pl-pds">'</span></span>,
-  total<span class="pl-k">:</span> <span class="pl-c1">177</span>,
-  subTotal<span class="pl-k">:</span> <span class="pl-c1">123</span>,
-  tax<span class="pl-k">:</span> <span class="pl-c1">54</span>,
-  shipping<span class="pl-k">:</span> <span class="pl-c1">0</span>,
-  discount<span class="pl-k">:</span> <span class="pl-c1">0</span>,
-  currency<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>USD<span class="pl-pds">'</span></span>,
-  cart<span class="pl-k">:</span> [{
-    sku<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo-177<span class="pl-pds">'</span></span>,
-    cost<span class="pl-k">:</span> <span class="pl-c1">177</span>,
-    name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo 177<span class="pl-pds">'</span></span>
-  }]
-};
-bst(<span class="pl-s"><span class="pl-pds">'</span>purchase<span class="pl-pds">'</span></span>, o);
-<span class="pl-c">/* done with order 1 */</span>
-
-
-<span class="pl-c">/* start order 2 */</span>
-<span class="pl-k">var</span> o <span class="pl-k">=</span> {
-  id<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>order-3926<span class="pl-pds">'</span></span>,
-  total<span class="pl-k">:</span> <span class="pl-c1">3926</span>,
-  subTotal<span class="pl-k">:</span> <span class="pl-c1">3700</span>,
-  tax<span class="pl-k">:</span> <span class="pl-c1">226</span>,
-  shipping<span class="pl-k">:</span> <span class="pl-c1">0</span>,
-  discount<span class="pl-k">:</span> <span class="pl-c1">0</span>,
-  currency<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>USD<span class="pl-pds">'</span></span>,
-  cart<span class="pl-k">:</span> {
-    sku<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo-3700<span class="pl-pds">'</span></span>,
-    cost<span class="pl-k">:</span> <span class="pl-c1">3700</span>,
-    name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo 3700<span class="pl-pds">'</span></span>
-  }
-};
-bst(<span class="pl-s"><span class="pl-pds">'</span>purchase<span class="pl-pds">'</span></span>, o);
-<span class="pl-c">/* done with order 2 */</span>
 </pre></div>
 
 <h3>
