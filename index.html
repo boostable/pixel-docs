@@ -107,7 +107,9 @@ but objects with these attributes should be used.</p>
 <li>
 <strong>tax</strong> {Number} <em>(optional)</em> any tax applied as <a href="http://www.iso.org/iso/home/standards/currency_codes.htm">ISO-4217</a> currency value</li>
 <li>
-<strong>discount</strong> {Number} <em>(optional)</em> any discounts applied as <a href="http://www.iso.org/iso/home/standards/currency_codes.htm">ISO-4217</a> currency value
+<strong>discount</strong> {Number} <em>(optional)</em> any discounts applied as <a href="http://www.iso.org/iso/home/standards/currency_codes.htm">ISO-4217</a> currency value</li>
+<li>
+<strong>fee</strong> {Number} <em>(optional)</em> any additional fees applied as <a href="http://www.iso.org/iso/home/standards/currency_codes.htm">ISO-4217</a> currency value
 usage:</li>
 </ul>
 
@@ -119,7 +121,7 @@ usage:</li>
   shipping<span class="pl-k">:</span> <span class="pl-c1">0</span>,
   discount<span class="pl-k">:</span> <span class="pl-c1">0</span>,
   currency<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>USD<span class="pl-pds">'</span></span>,
-  cart<span class="pl-k">:</span> {<span class="pl-c">/*ecommerecObject*/</span>}
+  cart<span class="pl-k">:</span> {<span class="pl-c">/*ecommerceObject*/</span>} <span class="pl-c">// or [{/*ecommerceObject 1*/}, {/*ecommerceObject 2*/} /*,...*/]</span>
 };</pre></div>
 
 <h2>
@@ -256,11 +258,35 @@ bst(<span class="pl-s"><span class="pl-pds">'</span>cart<span class="pl-pds">'</
 };
 bst(<span class="pl-s"><span class="pl-pds">'</span>purchase<span class="pl-pds">'</span></span>, o);</pre></div>
 
+<p>multi-item purchase</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> c <span class="pl-k">=</span> [
+  {
+    sku<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo-123<span class="pl-pds">'</span></span>,
+    cost<span class="pl-k">:</span> <span class="pl-c1">123</span>,
+    name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo 123<span class="pl-pds">'</span></span>
+  },
+  {
+    sku<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo-456<span class="pl-pds">'</span></span>,
+    cost<span class="pl-k">:</span> <span class="pl-c1">456</span>,
+    name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo 456<span class="pl-pds">'</span></span>
+  }
+];
+<span class="pl-k">var</span> o <span class="pl-k">=</span> {
+  id<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>order-703<span class="pl-pds">'</span></span>,
+  total<span class="pl-k">:</span> <span class="pl-c1">703</span>
+  subTotal<span class="pl-k">:</span> <span class="pl-c1">579</span>
+  tax<span class="pl-k">:</span> <span class="pl-c1">124</span>
+  fee<span class="pl-k">:</span> <span class="pl-c1">0</span>,
+  currency<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>USD<span class="pl-pds">'</span></span>,
+  cart<span class="pl-k">:</span> c
+};
+bst(<span class="pl-s"><span class="pl-pds">'</span>purchase<span class="pl-pds">'</span></span>, o);
+</pre></div>
+
 <p>track multi-item cart as individual purchases</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-c">/* start order 1*/</span>
-
-<span class="pl-c">// order 1</span>
 <span class="pl-k">var</span> o <span class="pl-k">=</span> {
   id<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>order-177<span class="pl-pds">'</span></span>,
   total<span class="pl-k">:</span> <span class="pl-c1">177</span>,
