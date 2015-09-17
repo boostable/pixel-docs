@@ -59,6 +59,8 @@ but objects with these attributes should be used as parameters to the events.</p
 <li>
 <strong>cost</strong> {Number} <em>(required)</em> <a href="http://www.iso.org/iso/home/standards/currency_codes.htm">ISO-4217</a> currency value</li>
 <li>
+<strong>category</strong> {String|Array[String]} <em>(optional)</em> the object category</li>
+<li>
 <strong>quantity</strong> {Number} <em>(optional)</em> default: 1</li>
 <li>
 <strong>currency</strong> {String} <em>(optional)</em> <a href="http://www.iso.org/iso/home/standards/currency_codes.htm">ISO-4217</a> currency code default: 'USD'</li>
@@ -97,6 +99,8 @@ but objects with these attributes should be used.</p>
 <li>
 <strong>total</strong> {Number} <em>(required)</em> total revenue as <a href="http://www.iso.org/iso/home/standards/currency_codes.htm">ISO-4217</a> currency value</li>
 <li>
+<strong>cart</strong> {EcommerceObject|Array[EcommerceObject]} <em>(required)</em> the items currently in the cart</li>
+<li>
 <strong>currency</strong> {Number} <em>(optional)</em> <a href="http://www.iso.org/iso/home/standards/currency_codes.htm">ISO-4217</a> currency code default: 'USD'</li>
 <li>
 <strong>subTotal</strong> {Number} <em>(optional)</em> <a href="http://www.iso.org/iso/home/standards/currency_codes.htm">ISO-4217</a> currency value</li>
@@ -114,7 +118,8 @@ usage:</li>
   tax<span class="pl-k">:</span> <span class="pl-c1">324</span>,
   shipping<span class="pl-k">:</span> <span class="pl-c1">0</span>,
   discount<span class="pl-k">:</span> <span class="pl-c1">0</span>,
-  currency<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>USD<span class="pl-pds">'</span></span>
+  currency<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>USD<span class="pl-pds">'</span></span>,
+  cart<span class="pl-k">:</span> {<span class="pl-c">/*ecommerecObject*/</span>}
 };</pre></div>
 
 <h2>
@@ -209,7 +214,7 @@ bst(<span class="pl-s"><span class="pl-pds">'</span>view<span class="pl-pds">'</
 
 <div class="highlight highlight-source-js"><pre>bst(<span class="pl-s"><span class="pl-pds">'</span>view<span class="pl-pds">'</span></span>, {sku<span class="pl-k">:</span> <span class="pl-c1">null</span>, category<span class="pl-k">:</span> [<span class="pl-s"><span class="pl-pds">'</span>foo<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>bar<span class="pl-pds">'</span></span>]});</pre></div>
 
-<p>add to cart (single item in cart):</p>
+<p>single item cart:</p>
 
 <div class="highlight highlight-source-js"><pre>bst(<span class="pl-s"><span class="pl-pds">'</span>cart<span class="pl-pds">'</span></span>, {
   sku<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo-123<span class="pl-pds">'</span></span>,
@@ -217,7 +222,7 @@ bst(<span class="pl-s"><span class="pl-pds">'</span>view<span class="pl-pds">'</
   name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo bar<span class="pl-pds">'</span></span>
 });</pre></div>
 
-<p>multi item add to cart:</p>
+<p>multi item cart:</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> c <span class="pl-k">=</span> [
   {
@@ -233,37 +238,27 @@ bst(<span class="pl-s"><span class="pl-pds">'</span>view<span class="pl-pds">'</
 ];
 bst(<span class="pl-s"><span class="pl-pds">'</span>cart<span class="pl-pds">'</span></span>, c);</pre></div>
 
-<p>single item purchase flow:</p>
+<p>single item purchase:</p>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-c">// add to cart</span>
-bst(<span class="pl-s"><span class="pl-pds">'</span>cart<span class="pl-pds">'</span></span>, {
-  sku<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo-4000<span class="pl-pds">'</span></span>,
-  cost<span class="pl-k">:</span> <span class="pl-c1">4000</span>,
-  name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo 4000<span class="pl-pds">'</span></span>
-});
-
-<span class="pl-c">// order </span>
-<span class="pl-k">var</span> o <span class="pl-k">=</span> {
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> o <span class="pl-k">=</span> {
   id<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>order-123<span class="pl-pds">'</span></span>,
   total<span class="pl-k">:</span> <span class="pl-c1">4324</span>,
   subTotal<span class="pl-k">:</span> <span class="pl-c1">4000</span>,
   tax<span class="pl-k">:</span> <span class="pl-c1">324</span>,
   shipping<span class="pl-k">:</span> <span class="pl-c1">0</span>,
   discount<span class="pl-k">:</span> <span class="pl-c1">0</span>,
-  currency<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>USD<span class="pl-pds">'</span></span>
+  currency<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>USD<span class="pl-pds">'</span></span>,
+  cart<span class="pl-k">:</span> {
+    sku<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo-4000<span class="pl-pds">'</span></span>,
+    cost<span class="pl-k">:</span> <span class="pl-c1">4000</span>,
+    name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo 4000<span class="pl-pds">'</span></span>
+  }
 };
 bst(<span class="pl-s"><span class="pl-pds">'</span>purchase<span class="pl-pds">'</span></span>, o);</pre></div>
 
 <p>track multi-item cart as individual purchases</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-c">/* start order 1*/</span>
-
-<span class="pl-c">// issue cart 1</span>
-bst(<span class="pl-s"><span class="pl-pds">'</span>cart<span class="pl-pds">'</span></span>, {
-  sku<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo-123<span class="pl-pds">'</span></span>,
-  cost<span class="pl-k">:</span> <span class="pl-c1">123</span>,
-  name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo 123<span class="pl-pds">'</span></span>
-});
 
 <span class="pl-c">// order 1</span>
 <span class="pl-k">var</span> o <span class="pl-k">=</span> {
@@ -273,22 +268,18 @@ bst(<span class="pl-s"><span class="pl-pds">'</span>cart<span class="pl-pds">'</
   tax<span class="pl-k">:</span> <span class="pl-c1">54</span>,
   shipping<span class="pl-k">:</span> <span class="pl-c1">0</span>,
   discount<span class="pl-k">:</span> <span class="pl-c1">0</span>,
-  currency<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>USD<span class="pl-pds">'</span></span>
+  currency<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>USD<span class="pl-pds">'</span></span>,
+  cart<span class="pl-k">:</span> [{
+    sku<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo-177<span class="pl-pds">'</span></span>,
+    cost<span class="pl-k">:</span> <span class="pl-c1">177</span>,
+    name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo 177<span class="pl-pds">'</span></span>
+  }]
 };
 bst(<span class="pl-s"><span class="pl-pds">'</span>purchase<span class="pl-pds">'</span></span>, o);
 <span class="pl-c">/* done with order 1 */</span>
 
 
 <span class="pl-c">/* start order 2 */</span>
-
-<span class="pl-c">// issue cart 2</span>
-bst(<span class="pl-s"><span class="pl-pds">'</span>cart<span class="pl-pds">'</span></span>, {
-  sku<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo-3700<span class="pl-pds">'</span></span>,
-  cost<span class="pl-k">:</span> <span class="pl-c1">3700</span>,
-  name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo 3700<span class="pl-pds">'</span></span>
-});
-
-<span class="pl-c">// order </span>
 <span class="pl-k">var</span> o <span class="pl-k">=</span> {
   id<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>order-3926<span class="pl-pds">'</span></span>,
   total<span class="pl-k">:</span> <span class="pl-c1">3926</span>,
@@ -296,7 +287,12 @@ bst(<span class="pl-s"><span class="pl-pds">'</span>cart<span class="pl-pds">'</
   tax<span class="pl-k">:</span> <span class="pl-c1">226</span>,
   shipping<span class="pl-k">:</span> <span class="pl-c1">0</span>,
   discount<span class="pl-k">:</span> <span class="pl-c1">0</span>,
-  currency<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>USD<span class="pl-pds">'</span></span>
+  currency<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>USD<span class="pl-pds">'</span></span>,
+  cart<span class="pl-k">:</span> {
+    sku<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo-3700<span class="pl-pds">'</span></span>,
+    cost<span class="pl-k">:</span> <span class="pl-c1">3700</span>,
+    name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>foo 3700<span class="pl-pds">'</span></span>
+  }
 };
 bst(<span class="pl-s"><span class="pl-pds">'</span>purchase<span class="pl-pds">'</span></span>, o);
 <span class="pl-c">/* done with order 2 */</span>
