@@ -67,7 +67,8 @@ attributes:
 * **total** {Number} _(required)_ total revenue as [ISO-4217](http://www.iso.org/iso/home/standards/currency_codes.htm) currency value
 * **cart** {EcommerceObject|Array[EcommerceObject]} _(required)_ the items currently in the cart
 * **currency** {Number} _(optional)_ [ISO-4217](http://www.iso.org/iso/home/standards/currency_codes.htm) currency code default: 'USD'
-* **subTotal** {Number} _(optional)_ [ISO-4217](http://www.iso.org/iso/home/standards/currency_codes.htm) currency value
+* **subTotal** {Number} _(optional)_ summation of costs prior to any shipping, fees, tax, etc. as [ISO-4217](http://www.iso.org/iso/home/standards/currency_codes.htm) currency value
+* **shipping** {Number} _(optional)_ any shipping cost applied as [ISO-4217](http://www.iso.org/iso/home/standards/currency_codes.htm) currency value
 * **tax** {Number} _(optional)_ any tax applied as [ISO-4217](http://www.iso.org/iso/home/standards/currency_codes.htm) currency value
 * **discount** {Number} _(optional)_ any discounts applied as [ISO-4217](http://www.iso.org/iso/home/standards/currency_codes.htm) currency value
 * **fee** {Number} _(optional)_ any additional fees applied as [ISO-4217](http://www.iso.org/iso/home/standards/currency_codes.htm) currency value
