@@ -5,22 +5,26 @@
 Loads the boostable tracking software
 
 browser requirements:
-* ie9+
-* chrome 5.0+
-* safari 5.0+
+* ie8+
+* chrome 2.0+
+* safari 3.0+
 * firefox 4.0+ 
-* opera 11.0+
+* opera 6.0+
 
-This snippet should be places in the header of any page wanting to be tracked (replace BOOST_ID with id provided to you):
+This snippet should be places in the header of any page wanting to be tracked (replace <BOOST_ID> with id provided to you):
+
 ```html
 <!-- boostable initialize -->
+<noscript><img style="display:none;" height="1" width="1" src="https://tracker.boostable.com/ping?ev=view&id=<BOOST_ID>&ns=1"/></noscript>
 <script>(function(b,s,t,p,x,l){b.bst||(b.bst=x=function(){x.event?x.event.apply(x,arguments):
-x.q.push(arguments)},x.q=[],x.v="2.0",x.s=Date.now());l=s.createElement(t);l.src=p;
-l.async=!0;s.head.appendChild(l)})(window,document,"script","//cdn.boostable.com/tr.js");</script>
+x.q.push(arguments)},x.q=[],x.v="2.0",x.s=new Date());l=s.createElement(t);l.src=p;l.async=!0;
+l.defer=!0;s.getElementsByTagName(t)[0].parentNode.appendChild(l)})(window,document,"script",
+"//cdn.boostable.com/tr.js");</script>
 
 <script>bst('init', '<BOOST_ID>');</script>
 <!-- end boostable initialize -->
 ```
+
 
 ## objects
 
@@ -67,7 +71,8 @@ attributes:
 * **total** {Number} _(required)_ total revenue as [ISO-4217](http://www.iso.org/iso/home/standards/currency_codes.htm) currency value
 * **cart** {EcommerceObject|Array[EcommerceObject]} _(required)_ the items currently in the cart
 * **currency** {Number} _(optional)_ [ISO-4217](http://www.iso.org/iso/home/standards/currency_codes.htm) currency code default: 'USD'
-* **subTotal** {Number} _(optional)_ [ISO-4217](http://www.iso.org/iso/home/standards/currency_codes.htm) currency value
+* **subTotal** {Number} _(optional)_ summation of costs prior to any shipping, fees, tax, etc. as [ISO-4217](http://www.iso.org/iso/home/standards/currency_codes.htm) currency value
+* **shipping** {Number} _(optional)_ any shipping cost applied as [ISO-4217](http://www.iso.org/iso/home/standards/currency_codes.htm) currency value
 * **tax** {Number} _(optional)_ any tax applied as [ISO-4217](http://www.iso.org/iso/home/standards/currency_codes.htm) currency value
 * **discount** {Number} _(optional)_ any discounts applied as [ISO-4217](http://www.iso.org/iso/home/standards/currency_codes.htm) currency value
 * **fee** {Number} _(optional)_ any additional fees applied as [ISO-4217](http://www.iso.org/iso/home/standards/currency_codes.htm) currency value
