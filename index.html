@@ -2,9 +2,8 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>Pixel Documentation by boostable</title>
+    <title>Pixel-docs by boostable</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="https://www.boostable.com/static/images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
@@ -12,15 +11,18 @@
   </head>
   <body>
     <section class="page-header">
-      <h1 class="project-name">Developer Resources</h1>
+      <h1 class="project-name">Pixel-docs</h1>
       <h2 class="project-tagline">pixel documentation</h2>
-      <!--<a href="https://github.com/boostable/pixel-docs" class="btn">View on GitHub</a>-->
-      <a href="https://raw.githubusercontent.com/boostable/pixel-docs/gh-pages/boostable_pixel_documentation.pdf" download class="btn">Download .pdf</a>
-      <a href="https://raw.githubusercontent.com/boostable/pixel-docs/gh-pages/boostable_pixel_documentation.md" download class="btn">Download .md</a>
+      <a href="https://github.com/boostable/pixel-docs" class="btn">View on GitHub</a>
+      <a href="https://github.com/boostable/pixel-docs/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/boostable/pixel-docs/tarball/master" class="btn">Download .tar.gz</a>
     </section>
 
     <section class="main-content">
-      <h2>
+      <h1>
+<a id="pixel-documentation" class="anchor" href="#pixel-documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pixel documentation</h1>
+
+<h2>
 <a id="javascript-load" class="anchor" href="#javascript-load" aria-hidden="true"><span class="octicon octicon-link"></span></a>javascript load</h2>
 
 <p>Loads the boostable tracking software</p>
@@ -28,19 +30,21 @@
 <p>browser requirements:</p>
 
 <ul>
-<li>ie9+</li>
-<li>chrome 5.0+</li>
-<li>safari 5.0+</li>
+<li>ie8+</li>
+<li>chrome 2.0+</li>
+<li>safari 3.0+</li>
 <li>firefox 4.0+ </li>
-<li>opera 11.0+</li>
+<li>opera 6.0+</li>
 </ul>
 
-<p>This snippet should be places in the header of any page wanting to be tracked (replace BOOST_ID with id provided to you):</p>
+<p>This snippet should be places in the header of any page wanting to be tracked (replace  with id provided to you):</p>
 
 <div class="highlight highlight-text-html-basic"><pre><span class="pl-c">&lt;!-- boostable initialize --&gt;</span>
+&lt;<span class="pl-ent">noscript</span>&gt;&lt;<span class="pl-ent">img</span> <span class="pl-e">style</span>=<span class="pl-s"><span class="pl-pds">"</span>display:none;<span class="pl-pds">"</span></span> <span class="pl-e">height</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">width</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>https://tracker.boostable.com/ping?ev=view<span class="pl-ii">&amp;</span>id=&lt;BOOST_ID&gt;<span class="pl-ii">&amp;</span>ns=1<span class="pl-pds">"</span></span>/&gt;&lt;/<span class="pl-ent">noscript</span>&gt;
 <span class="pl-s1">&lt;<span class="pl-ent">script</span>&gt;(<span class="pl-k">function</span>(<span class="pl-smi">b</span>,<span class="pl-smi">s</span>,<span class="pl-smi">t</span>,<span class="pl-smi">p</span>,<span class="pl-smi">x</span>,<span class="pl-smi">l</span>){b.bst<span class="pl-k">||</span>(b.bst<span class="pl-k">=</span><span class="pl-en">x</span><span class="pl-k">=</span><span class="pl-k">function</span>(){x.<span class="pl-c1">event</span><span class="pl-k">?</span>x.<span class="pl-c1">event</span>.<span class="pl-c1">apply</span>(x,arguments)<span class="pl-k">:</span></span>
-<span class="pl-s1">x.q.<span class="pl-c1">push</span>(arguments)},x.q<span class="pl-k">=</span>[],x.v<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>2.0<span class="pl-pds">"</span></span>,x.s<span class="pl-k">=</span><span class="pl-c1">Date</span>.now());l<span class="pl-k">=</span>s.<span class="pl-c1">createElement</span>(t);l.src<span class="pl-k">=</span>p;</span>
-<span class="pl-s1">l.async<span class="pl-k">=!</span><span class="pl-c1">0</span>;s.head.<span class="pl-c1">appendChild</span>(l)})(<span class="pl-c1">window</span>,<span class="pl-c1">document</span>,<span class="pl-s"><span class="pl-pds">"</span>script<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>//cdn.boostable.com/tr.js<span class="pl-pds">"</span></span>);&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">x.q.<span class="pl-c1">push</span>(arguments)},x.q<span class="pl-k">=</span>[],x.v<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>2.0<span class="pl-pds">"</span></span>,x.s<span class="pl-k">=</span><span class="pl-k">new</span> <span class="pl-en">Date</span>());l<span class="pl-k">=</span>s.<span class="pl-c1">createElement</span>(t);l.src<span class="pl-k">=</span>p;l.async<span class="pl-k">=!</span><span class="pl-c1">0</span>;</span>
+<span class="pl-s1">l.<span class="pl-c1">defer</span><span class="pl-k">=!</span><span class="pl-c1">0</span>;s.<span class="pl-c1">getElementsByTagName</span>(t)[<span class="pl-c1">0</span>].<span class="pl-c1">parentNode</span>.<span class="pl-c1">appendChild</span>(l)})(<span class="pl-c1">window</span>,<span class="pl-c1">document</span>,<span class="pl-s"><span class="pl-pds">"</span>script<span class="pl-pds">"</span></span>,</span>
+<span class="pl-s1"><span class="pl-s"><span class="pl-pds">"</span>//cdn.boostable.com/tr.js<span class="pl-pds">"</span></span>);&lt;/<span class="pl-ent">script</span>&gt;</span>
 
 <span class="pl-s1">&lt;<span class="pl-ent">script</span>&gt;bst(<span class="pl-s"><span class="pl-pds">'</span>init<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>&lt;BOOST_ID&gt;<span class="pl-pds">'</span></span>);&lt;/<span class="pl-ent">script</span>&gt;</span>
 <span class="pl-c">&lt;!-- end boostable initialize --&gt;</span></pre></div>
@@ -107,7 +111,7 @@ but objects with these attributes should be used.</p>
 <li>
 <strong>currency</strong> {Number} <em>(optional)</em> <a href="http://www.iso.org/iso/home/standards/currency_codes.htm">ISO-4217</a> currency code default: 'USD'</li>
 <li>
-<strong>subTotal</strong> {Number} <em>(optional)</em> summation of costs prior to any shipping, fees, tax, etc. <a href="http://www.iso.org/iso/home/standards/currency_codes.htm">ISO-4217</a> currency value</li>
+<strong>subTotal</strong> {Number} <em>(optional)</em> summation of costs prior to any shipping, fees, tax, etc. as <a href="http://www.iso.org/iso/home/standards/currency_codes.htm">ISO-4217</a> currency value</li>
 <li>
 <strong>shipping</strong> {Number} <em>(optional)</em> any shipping cost applied as <a href="http://www.iso.org/iso/home/standards/currency_codes.htm">ISO-4217</a> currency value</li>
 <li>
@@ -283,9 +287,9 @@ bst(<span class="pl-s"><span class="pl-pds">'</span>purchase<span class="pl-pds"
 ];
 <span class="pl-k">var</span> o <span class="pl-k">=</span> {
   id<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>order-703<span class="pl-pds">'</span></span>,
-  total<span class="pl-k">:</span> <span class="pl-c1">703</span>,
-  subTotal<span class="pl-k">:</span> <span class="pl-c1">579</span>,
-  tax<span class="pl-k">:</span> <span class="pl-c1">124</span>,
+  total<span class="pl-k">:</span> <span class="pl-c1">703</span>
+  subTotal<span class="pl-k">:</span> <span class="pl-c1">579</span>
+  tax<span class="pl-k">:</span> <span class="pl-c1">124</span>
   fee<span class="pl-k">:</span> <span class="pl-c1">0</span>,
   currency<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>USD<span class="pl-pds">'</span></span>,
   cart<span class="pl-k">:</span> c
@@ -298,8 +302,9 @@ bst(<span class="pl-s"><span class="pl-pds">'</span>purchase<span class="pl-pds"
 <p>this <a href="https://jsfiddle.net/boostmike/dnpvudrk/">fiddle</a> for a simple ecommerce simulation. Use as reference only.</p>
 
       <footer class="site-footer">
-        <span class="site-footer-owner">This page is maintained by <a href="https://www.boostable.com">boostable</a>.</span>
+        <span class="site-footer-owner"><a href="https://github.com/boostable/pixel-docs">Pixel-docs</a> is maintained by <a href="https://github.com/boostable">boostable</a>.</span>
 
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
 
     </section>
