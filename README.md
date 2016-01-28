@@ -235,9 +235,9 @@ var c = [
 ];
 var o = {
   id: 'order-703',
-  total: 703
-  subTotal: 579
-  tax: 124
+  total: 703,
+  subTotal: 579,
+  tax: 124,
   fee: 0,
   currency: 'USD',
   cart: c
