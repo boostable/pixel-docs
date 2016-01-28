@@ -11,7 +11,7 @@ browser requirements:
 * firefox 4.0+ 
 * opera 6.0+
 
-This snippet should be places in the header of any page wanting to be tracked (replace <BOOST_ID> with id provided to you):
+This snippet should be places in the header of any page wanting to be tracked (replace \<BOOST_ID\> with id provided to you):
 
 ```html
 <!-- boostable -->
