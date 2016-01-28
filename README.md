@@ -249,4 +249,6 @@ bst('purchase', o);
 
 this [fiddle](https://jsfiddle.net/boostmike/dnpvudrk/) for a simple ecommerce simulation. Use as reference only.
 
+install our pixel event helper chrome extension [here](https://chrome.google.com/webstore/detail/boostable-event-monitor/ghbjkdijmhfknflecmgfkjpafjhlebdc)
+
 
