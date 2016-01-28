@@ -11,18 +11,18 @@ browser requirements:
 * firefox 4.0+ 
 * opera 6.0+
 
-This snippet should be places in the header of any page wanting to be tracked (replace <BOOST_ID> with id provided to you):
+This snippet should be places in the header of any page wanting to be tracked (replace \<BOOST_ID\> with id provided to you):
 
 ```html
-<!-- boostable initialize -->
-<noscript><img style="display:none;" height="1" width="1" src="https://tracker.boostable.com/ping?ev=view&id=<BOOST_ID>&ns=1"/></noscript>
+<!-- boostable -->
+<noscript><img style="display:none;" height="1" width="1" src="https://pxl.boostable.com?ev=view&id=<BOOST_ID>&ns=1"/></noscript>
 <script>(function(b,s,t,p,x,l){b.bst||(b.bst=x=function(){x.event?x.event.apply(x,arguments):
-x.q.push(arguments)},x.q=[],x.v="2.0",x.s=new Date());l=s.createElement(t);l.src=p;l.async=!0;
-l.defer=!0;s.getElementsByTagName(t)[0].parentNode.appendChild(l)})(window,document,"script",
+x.q.push(arguments)},x.q=[],x.v="2.1",x.s=1*new Date());l=s.createElement(t);l.async=1;
+l.src=p;s.getElementsByTagName(t)[0].parentNode.appendChild(l)})(window,document,"script",
 "//cdn.boostable.com/tr.js");</script>
 
 <script>bst('init', '<BOOST_ID>');</script>
-<!-- end boostable initialize -->
+<!-- end boostable -->
 ```
 
 
@@ -235,9 +235,9 @@ var c = [
 ];
 var o = {
   id: 'order-703',
-  total: 703
-  subTotal: 579
-  tax: 124
+  total: 703,
+  subTotal: 579,
+  tax: 124,
   fee: 0,
   currency: 'USD',
   cart: c
@@ -248,5 +248,7 @@ bst('purchase', o);
 ### see also:
 
 this [fiddle](https://jsfiddle.net/boostmike/dnpvudrk/) for a simple ecommerce simulation. Use as reference only.
+
+install our pixel event helper chrome extension [here](https://chrome.google.com/webstore/detail/boostable-event-monitor/ghbjkdijmhfknflecmgfkjpafjhlebdc)
 
 
